@@ -1,2 +1,2 @@
-# Ottawa-WW-Data
-Data repository to store Ottawa wastewater data using the Ottawa Data Model.
+# Canadian Open Wastewater Surveillance Database
+Data repository to store Canadian wastewater data using the Ottawa Data Model.
