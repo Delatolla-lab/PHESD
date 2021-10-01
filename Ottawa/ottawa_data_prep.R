@@ -23,11 +23,12 @@ ottawa.df$outlier <- ifelse(!is.logical(ottawa.df$outlier),
 
 # Create wide table
 ottawa_wide <- ottawa.df %>%
-  select(sample_date, n1_copies_per_copies_pep_avg,
+  select(sample_id, sample_date, n1_copies_per_copies_pep_avg,
          n1_copies_per_copies_pep_stdev, n2_copies_per_copies_pep_avg,
          n2_copies_per_copies_pep_stdev, ct_pep_avg, outlier, testB117,
-         detectB117, fractionB117, fractionB117_stdev) %>%
-  rename(sampleDate = "sample_date",
+         detectB117, fractionB117, fractionB117_stdev, testB167, detectB167) %>%
+  rename(sampleID = "sample_id",
+         sampleDate = "sample_date",
          covN1_nPMMoV_meanNr = "n1_copies_per_copies_pep_avg",
          covN1_nPMMoV_sdNr = "n1_copies_per_copies_pep_stdev",
          covN2_nPMMoV_meanNr = "n2_copies_per_copies_pep_avg",
@@ -41,7 +42,7 @@ ottawa_wide <- ottawa.df %>%
          covN2_nPMMoV_meanNr = round(covN2_nPMMoV_meanNr, digits = 5),
          covN2_nPMMoV_sdNr = round(covN2_nPMMoV_sdNr, digits = 5),
          ) %>%
-  relocate(sampleDate, siteID, siteName)
+  relocate(sampleDate, sampleID, siteID, siteName)
 
 # Save wide table
 write.csv(ottawa_wide, file = "Ottawa/Data/wastewater_virus_test.csv",
@@ -49,11 +50,11 @@ write.csv(ottawa_wide, file = "Ottawa/Data/wastewater_virus_test.csv",
 
 # Create long table
 quality_flag <- ottawa_wide %>%
-  select(sampleDate, qualityFlag) %>%
+  select(sampleDate, sampleID, qualityFlag) %>%
   rename(analysisDate = "sampleDate")
 
 ottawa_long <- ottawa_wide %>%
-  select(-c("siteID", "siteName", "qualityFlag", "testB117", "detectB117")) %>%
+  select(-c("siteID", "sampleID", "siteName", "qualityFlag", "testB117", "detectB117")) %>%
   pivot_longer(!sampleDate, names_to = "type", values_to = "value",
                values_drop_na = TRUE) %>%
   rename(analysisDate = "sampleDate") %>%
@@ -90,7 +91,7 @@ ottawa_long <- ottawa_wide %>%
     accessToProvHA = TRUE,
     accessToOtherProv = TRUE,
     accessToDetails = TRUE) %>%
-  relocate(labID, analysisDate, fractionAnalyzed, type)
+  relocate(sampleID, labID, analysisDate, fractionAnalyzed, type)
 
 # Save long table
 write.csv(ottawa_long, file = "Ottawa/Data/wwMeasure.csv", row.names = FALSE)
