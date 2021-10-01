@@ -45,7 +45,7 @@ ottawa_wide <- ottawa.df %>%
   relocate(sampleDate, sampleID, siteID, siteName)
 
 # Save wide table
-write.csv(ottawa_wide, file = "Ottawa/Data/wastewater_virus_test.csv",
+write.csv(ottawa_wide, file = "Ottawa/Data/wastewater_virus.csv",
           row.names = FALSE)
 
 # Create long table
