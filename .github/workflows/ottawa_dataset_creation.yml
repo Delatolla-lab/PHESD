@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
           token: ${{ secrets.ACTION_TOKEN }}
       - name: setup-r
         uses: r-lib/actions/setup-r@v1
