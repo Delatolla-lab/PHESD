@@ -23,7 +23,7 @@ jobs:
       - name: Install packages
         run: Rscript -e 'install.packages(c("tidyverse", "readxl", "tidyr"))'
       - name: Download Ottawa wastewater data from Google Drive
-        run: curl -L "https://docs.google.com/spreadsheets/d/173VngpCjcZQ6ScQGor2jRuP4SLNDx_Lr/export?gid=0&format=xlsx" --output "Ottawa/Data/ottawa_data.xlsx" --create-dirs
+        run: curl -L "https://drive.google.com/uc?export=download&id=173VngpCjcZQ6ScQGor2jRuP4SLNDx_Lr" --output "Ottawa/Data/ottawa_data.xlsx" --create-dirs
       - name: Prepare data
         run: Rscript R/ottawa_data_prep.R
       - name: Commit files
