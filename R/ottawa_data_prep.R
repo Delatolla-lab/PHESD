@@ -4,8 +4,7 @@ library(tidyverse)
 library(readxl)
 library(tidyr)
 
-ottawa.df <- readxl::read_excel(file.path(getwd(),
-                                          "Ottawa/Data/ottawa_data.xlsx")) 
+ottawa.df <- readxl::read_excel("Ottawa/Data/ottawa_data.xlsx")
 
 siteID <- "Ottawa-1"
 siteName <- "Ottawa-ROPEC"
