@@ -53,7 +53,7 @@ quality_flag <- ottawa_wide %>%
   rename(analysisDate = "sampleDate")
 
 ottawa_long <- ottawa_wide %>%
-  select(-c("siteID", "sampleID", "siteName", "qualityFlag", "testB117", "detectB117")) %>%
+  select(-c("siteID", "sampleID", "siteName", "qualityFlag", "testB117", "detectB117", "testB167", "detectB167", "b167_level")) %>%
   pivot_longer(!sampleDate, names_to = "type", values_to = "value",
                values_drop_na = TRUE) %>%
   rename(analysisDate = "sampleDate") %>%
