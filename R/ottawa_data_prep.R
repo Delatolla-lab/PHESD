@@ -9,12 +9,20 @@ ottawa.df <- as.data.frame(readxl::read_excel("Ottawa/Data/ottawa_data.xlsx"))
 siteID <- "Ottawa-1"
 siteName <- "Ottawa-ROPEC"
 
-if(is.character(ottawa.df$sample_date)){
-  if(startsWith(first(ottawa.df$sample_date), "4") == TRUE){
-    ottawa.df$sample_date <- as.Date(as.numeric(ottawa.df$sample_date),
-                                     origin = "1899-12-30")
+tmp_data <- list()
+x <- 0
+for(row in 1:nrow(ottawa.df)){
+  x <- x + 1
+  tmp_data[[x]] <- ottawa.df[row,]
+  if((startsWith(first(tmp_data[[x]]$sample_date), "4") == TRUE)){
+    tmp_data[[x]]$sample_date <- as.Date(as.numeric(tmp_data[[x]]$sample_date),
+                                         origin = "1899-12-30")
+  }
+  else{
+    tmp_data[[x]]$sample_date <- as.Date(tmp_data[[x]]$sample_date)
   }
 }
+ottawa.df <- bind_rows(tmp_data)
 
 ottawa.df$outlier <- ifelse(!is.logical(ottawa.df$outlier),
                             as.logical(ottawa.df$outlier),
