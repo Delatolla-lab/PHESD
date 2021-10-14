@@ -19,8 +19,8 @@ jobs:
       - name: Download Ottawa wastewater data
         uses: wei/curl@v1.1.1
         with:
-          token: ${{ secrets.PAT_TOKEN }}
           args: |
+            -H Authorization: token ${{ secrets.PAT_TOKEN }}
             -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs
             -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/Data/wwMeasure.csv" --create-dirs
       - name: Commit files
