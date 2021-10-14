@@ -16,11 +16,12 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.ACTION_TOKEN }}
-      - name: Download Ottawa wastewater data from Google Drive
+      - name: Download Ottawa wastewater data
+        env: 
+          PRIVATE_GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" 
-          -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs 
-          -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/wwMeasure.csv" --create-dirs
+          curl -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs 
+          curl -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/wwMeasure.csv" --create-dirs
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
