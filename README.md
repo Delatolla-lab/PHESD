@@ -2,7 +2,7 @@
 
 ## Description
 
-The repository is used to store Canadian wastewater data using the Ottawa Data Model ([ODM](https://github.com/Big-Life-Lab/ODM)).
+The repository is used to store Canadian wastewater data using the Open Data Model ([ODM](https://github.com/Big-Life-Lab/ODM)).
 
 ## Background
 
