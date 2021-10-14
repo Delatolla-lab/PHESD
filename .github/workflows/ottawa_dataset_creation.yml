@@ -21,7 +21,7 @@ jobs:
         with:
           args: |
             -H \"Token: ${{ secrets.PAT_TOKEN}}"\
-            -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs \
+            -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs
             -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/Data/wwMeasure.csv" --create-dirs
       - name: Commit files
         run: |
