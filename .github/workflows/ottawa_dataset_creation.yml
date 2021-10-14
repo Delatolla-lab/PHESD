@@ -31,4 +31,4 @@ jobs:
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.ACTION_TOKEN }}
-          branch: 'main'
+          branch: 'cows-private-connect'
