@@ -17,11 +17,12 @@ jobs:
           ref: main
           token: ${{ secrets.ACTION_TOKEN }}
       - name: Download Ottawa wastewater data
-        run: |
-          TOKEN = ${{ secrets.PAT_TOKEN }}
-          curl -H "Authorization: token $TOKEN
-          curl -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs 
-          curl -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/Data/wwMeasure.csv" --create-dirs
+        uses: wei/curl@v1.1.1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          args: |
+            -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wastewater_virus.csv --output "Ottawa/Data/wastewater_virus.csv" --create-dirs
+            -L https://raw.githubusercontent.com/Big-Life-Lab/COWS-private/main/Ottawa/Data/wwMeasure.csv --output "Ottawa/Data/wwMeasure.csv" --create-dirs
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
