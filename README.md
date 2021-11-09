@@ -1,5 +1,7 @@
 # The Public Health Environmental Surveillance Database (PHESD)
 
+[![DOI](https://zenodo.org/badge/410863559.svg)](https://zenodo.org/badge/latestdoi/410863559)
+
 ## Description
 
 The repository is used to store Canadian wastewater and other environmental surveillance data using the Environmental Surveillance for Public Health Open Data Model ([ESPH-ODM](https://github.com/Big-Life-Lab/ODM)).
