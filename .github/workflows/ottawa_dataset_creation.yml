@@ -2,10 +2,10 @@
 
 name: Ottawa-Dataset-creation
 
-# Runs everyday at 1:00pm EST/EDT (5:00pm UTC)
+# Runs everyday at 1:00pm EST/EDT (6:00pm UTC)
 on:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 18 * * *'
   workflow_dispatch:
   
 jobs:
