@@ -4,7 +4,7 @@
 
 ## Description
 
-The repository is used to store Canadian wastewater and other environmental surveillance data using the Environmental Surveillance for Public Health Open Data Model ([ESPH-ODM](https://github.com/Big-Life-Lab/ODM)).
+The repository is used to store Canadian wastewater and other environmental surveillance data using the Public Health Environmental Surveillance Open Data Model ([PHES-ODM](https://github.com/Big-Life-Lab/PHES-ODM)).
 
 ## Background
 
@@ -12,7 +12,7 @@ Wastewater testing and surveillance (WWS) has a long history as a public health 
 
 That is why we developed the Public Health Environmental Surveillance Database (PHESD). This centralized database, funded by CoVaRR Net, the Canadian Institute for Health network, serves as an central depository for open access wastewater surveillance data. This will shrink the delay between the measurement and analysis, and provide more data for better modeling, better collaboration, and better tools in the fight against the COVID-19 pandemic.
 
-To ensure that the PHESD is usable for all users, we use the Environmental Surveillance for Public Health Open Data Model ([ESPH-ODM](https://github.com/Big-Life-Lab/ODM)). The ODM an open, standard approach to share wastewater surveillance data. The ODM helps the wastewater surveillance community collaborate by allowing teams worldwide to share their data in a common structure. The model uses a relational dictionary to map more than 150 variables into 10 tables, and offers documentation on how to use the model, template files to record data in the ODM format, and scripts of code to set up a relational database according to the ODM schema.
+To ensure that the PHESD is usable for all users, we use the Public Health Environmental Surveillance Open Data Model ([PHES-ODM](https://github.com/Big-Life-Lab/PHES-ODM)). The PHES-ODM an open, standard approach to share wastewater surveillance data. The PHES-ODM helps the wastewater surveillance community collaborate by allowing teams worldwide to share their data in a common structure. The model uses a relational dictionary to map more than 150 variables into 10 tables, and offers documentation on how to use the model, template files to record data in the PHES-ODM format, and scripts of code to set up a relational database according to the PHES-ODM schema.
 
 ## Current Objectives
 
@@ -20,5 +20,5 @@ To ensure that the PHESD is usable for all users, we use the Environmental Surve
 
 - **Allow detailed wastewater data.** This is a distinction between PHESD and other repositories - with the PHESD we allow for the storage of even detailed data. This means storing details on variants and sequencing, among other details.
 
-- **Easy to add data.** This database will use the Environmental Surveillance for Public Health Open Data Model ([ESPH-ODM](https://github.com/Big-Life-Lab/ODM)) to allow wastewater testing labs to share their using an open access, open science approach in a shared format. To help support labs and other data custodians is adopting the ODM format for the PHESD, we have developed a suite of tools to automate data validation using the Open Data Model validation schema and rule set. We can automatically add your data if it is in the ODM format on common data platforms like Dropbox, Sync, Google Drive, ArcGIS. This automatic data scraping can come from open access sources, but to preserve privacy for some labs we may scrap to a private version of this GitHub repository, which we then scrap onto this public-facing repository.
+- **Easy to add data.** This database will use the Public Health Environmental Surveillance Open Data Model ([PHES-ODM](https://github.com/Big-Life-Lab/PHES-ODM)) to allow wastewater testing labs to share their using an open access, open science approach in a shared format. To help support labs and other data custodians is adopting the PHES-ODM format for the PHESD, we have developed a suite of tools to automate data validation using the Open Data Model validation schema and rule set. We can automatically add your data if it is in the PHES-ODM format on common data platforms like Dropbox, Sync, Google Drive, ArcGIS. This automatic data scraping can come from open access sources, but to preserve privacy for some labs we may scrap to a private version of this GitHub repository, which we then scrap onto this public-facing repository.
 
