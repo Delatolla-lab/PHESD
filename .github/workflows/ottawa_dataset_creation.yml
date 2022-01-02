@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.ACTION_TOKEN }}
       - name: Download Ottawa wastewater data
         run: |
-            curl -H "Authorization: token ${{ secrets.PAT }}" -H "Accept: application/vnd.github.v4.raw" -L https://api.github.com/repos/Big-Life-Lab/PHESD-private/contents/Ottawa/Data/wastewater_virus.csv --output "Wastewater/Ottawa/Data/wastewater_virus.csv" --create-dirs -L https://api.github.com/repos/Big-Life-Lab/PHESD-private/contents/Ottawa/Data/wwMeasure.csv --output "Wastewater/Ottawa/Data/wwMeasure.csv" --create-dirs
+            curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" -H "Accept: application/vnd.github.v4.raw" -L https://api.github.com/repos/Big-Life-Lab/PHESD-private/contents/Ottawa/Data/wastewater_virus.csv --output "Wastewater/Ottawa/Data/wastewater_virus.csv" --create-dirs -L https://api.github.com/repos/Big-Life-Lab/PHESD-private/contents/Ottawa/Data/wwMeasure.csv --output "Wastewater/Ottawa/Data/wwMeasure.csv" --create-dirs
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
