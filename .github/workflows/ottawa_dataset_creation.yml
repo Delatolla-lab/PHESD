@@ -6,6 +6,9 @@ name: Ottawa-Dataset-creation
 on:
   schedule:
     - cron: '15 19 * * *'
+    push:
+    branches:
+      - main
   workflow_dispatch:
   
 jobs:
