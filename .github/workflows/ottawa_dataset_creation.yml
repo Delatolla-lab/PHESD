@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.ACTION_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download Ottawa wastewater data
         run: |
             curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" -H "Accept: application/vnd.github.v4.raw" -L https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wastewater_virus.csv --output "Wastewater/Ottawa/Data/wastewater_virus.csv" --create-dirs -L https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wwMeasure.csv --output "Wastewater/Ottawa/Data/wwMeasure.csv" --create-dirs
@@ -30,5 +30,5 @@ jobs:
           git commit -m "Update Ottawa data" -a || echo "Nothing to update"
       - uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.ACTION_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'main'
