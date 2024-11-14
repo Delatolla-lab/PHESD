@@ -5,6 +5,7 @@ name: Ottawa-Dataset-creation
 # Runs everyday at 2:15pm EST/EDT (19:15 UTC)
 on:
   schedule:
+    - cron: '55 14 * * *'  # Runs at 9:55 AM EST (14:55 UTC)
     - cron: '15 19 * * *'
   push:
     branches:
