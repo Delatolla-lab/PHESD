@@ -8,9 +8,6 @@ on:
     - cron: '55 14 * * *'  # Runs at 9:55 AM EST (14:55 UTC)
     - cron: '55 19 * * *'
     - cron: '15 19 * * *'
-  push:
-    branches:
-      - main
   workflow_dispatch:
   
 jobs:
@@ -23,7 +20,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download Ottawa wastewater data
         run: |
-            curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" -H "Accept: application/vnd.github.v4.raw" -L https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wastewater_virus.csv --output "Wastewater/Ottawa/Data/wastewater_virus.csv" --create-dirs -L https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wwMeasure.csv --output "Wastewater/Ottawa/Data/wwMeasure.csv" --create-dirs
+          mkdir -p Wastewater/Ottawa/Data
+          # Download to temporary files and validate before replacing
+          curl -f -H "Authorization: token ${{ secrets.PAT_TOKEN }}" -H "Accept: application/vnd.github.v4.raw" -L "https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wastewater_virus.csv" --output "Wastewater/Ottawa/Data/wastewater_virus.tmp.csv" || true
+          if [ -s "Wastewater/Ottawa/Data/wastewater_virus.tmp.csv" ] && grep -q '^"sampleDate"' "Wastewater/Ottawa/Data/wastewater_virus.tmp.csv"; then
+            mv "Wastewater/Ottawa/Data/wastewater_virus.tmp.csv" "Wastewater/Ottawa/Data/wastewater_virus.csv"
+          else
+            echo "Warning: Download of wastewater_virus.csv failed or returned non-CSV data. Keeping existing file."
+            rm -f "Wastewater/Ottawa/Data/wastewater_virus.tmp.csv"
+          fi
+
+          curl -f -H "Authorization: token ${{ secrets.PAT_TOKEN }}" -H "Accept: application/vnd.github.v4.raw" -L "https://api.github.com/repos/Delatolla-lab/PHESD-private/contents/Ottawa/Data/wwMeasure.csv" --output "Wastewater/Ottawa/Data/wwMeasure.tmp.csv" || true
+          if [ -s "Wastewater/Ottawa/Data/wwMeasure.tmp.csv" ] && grep -q '^"sampleID"' "Wastewater/Ottawa/Data/wwMeasure.tmp.csv"; then
+            mv "Wastewater/Ottawa/Data/wwMeasure.tmp.csv" "Wastewater/Ottawa/Data/wwMeasure.csv"
+          else
+            echo "Warning: Download of wwMeasure.csv failed or returned non-CSV data. Keeping existing file."
+            rm -f "Wastewater/Ottawa/Data/wwMeasure.tmp.csv"
+          fi
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
